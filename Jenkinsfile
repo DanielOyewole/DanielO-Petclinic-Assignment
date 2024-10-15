@@ -48,7 +48,7 @@
         stage('Test Login') {
             steps {
                 bat """
-                echo %JFROG_CREDENTIALS_PSW%
+                echo %JFROG_CREDENTIALS_USR%
                 """
                 
                
