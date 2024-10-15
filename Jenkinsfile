@@ -48,7 +48,7 @@
         stage('Test Login') {
             steps {
                 bat """
-                echo %JFROG_CREDENTIALS_USR%
+                 echo Password Length: %JFROG_CREDENTIALS_PSW:~0,5% (Truncated)
                 """
                 
                
@@ -59,7 +59,7 @@
             steps {
                 // Login to Artifactory
                 bat """
-                echo Pass1word | docker login https://%JFROG_URL%/artifactory -u %JFROG_CREDENTIALS_USR% --password-stdin
+                echo %JFROG_CREDENTIALS_PSW% | docker login https://%JFROG_URL%/artifactory -u %JFROG_CREDENTIALS_USR% --password-stdin
                 """
             }
         }
