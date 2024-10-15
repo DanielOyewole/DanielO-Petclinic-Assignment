@@ -18,8 +18,7 @@
             steps {
                 // Compile and test using the Spring Boot Maven plugin
                 //sh './mvnw clean package'
-                //bat './mvnw package'
-                echo 'test'
+                bat './mvnw package'
 
             }
         }
@@ -27,8 +26,7 @@
         stage('Build Docker Image') {
             steps {
                 // Build a Docker image using the Spring Boot build plugin
-                //bat './mvnw spring-boot:build-image'
-                echo 'test2'
+                bat './mvnw spring-boot:build-image'
             }
         }
 
@@ -47,9 +45,9 @@
         stage('Artifactory Login') {
             steps {
                 // Login to Artifactory
-                
-                bat echo '${JFROG_CREDENTIALS_PSW}' | docker login 'https://${JFROG_URL}/artifactory' -u '${JFROG_CREDENTIALS_USR}' --password-stdin
-            
+                bat """
+                echo %JFROG_CREDENTIALS_PSW% | docker login 'https://%JFROG_URL%/artifactory' -u %JFROG_CREDENTIALS_USR% --password-stdin
+                """
             }
         }
 
@@ -57,7 +55,7 @@
             steps {
                 // Tag the Docker image
                 bat """
-                docker tag ${IMAGE_NAME}:${IMAGE_TAG} ${JFROG_URL}/${REPO_NAME}/${IMAGE_NAME}:${IMAGE_TAG}
+                docker tag %IMAGE_NAME%:%IMAGE_TAG% %JFROG_URL%/%REPO_NAME%/%IMAGE_NAME%:%IMAGE_TAG%
                 """
             }
         }
@@ -65,8 +63,9 @@
         stage('push image') {
             steps {
                 // Push to Artifactory
-                
-                bat docker push ${JFROG_URL}/${REPO_NAME}/${IMAGE_NAME}:${IMAGE_TAG}               
+                bat """
+                docker push ${JFROG_URL}/${REPO_NAME}/${IMAGE_NAME}:${IMAGE_TAG}
+                """                
 
                 //sh 'jfrog rt upload --url https://guddytech.jfrog.io/artifactory/ --access-token ${ARTIFCATORY_ACCESS_TOKEN} target/*.jar java-web-app/'
                 //bat 'java -jar target/*.jar &'
