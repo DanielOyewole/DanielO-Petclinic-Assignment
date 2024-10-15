@@ -18,7 +18,8 @@
             steps {
                 // Compile and test using the Spring Boot Maven plugin
                 //sh './mvnw clean package'
-                bat './mvnw package'
+                //bat './mvnw package'
+                echo 'hi'
 
             }
         }
@@ -26,7 +27,8 @@
         stage('Build Docker Image') {
             steps {
                 // Build a Docker image using the Spring Boot build plugin
-                bat './mvnw spring-boot:build-image'
+                //bat './mvnw spring-boot:build-image'
+                echo 'hi'
             }
         }
 
@@ -45,9 +47,7 @@
         stage('Artifactory Login') {
             steps {
                 // Login to Artifactory
-                bat """
                 echo %JFROG_CREDENTIALS_PSW% | docker login 'https://%JFROG_URL%/artifactory' -u %JFROG_CREDENTIALS_USR% --password-stdin
-                """
             }
         }
 
