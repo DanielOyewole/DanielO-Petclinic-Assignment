@@ -6,12 +6,10 @@
       JFROG_URL = 'oluwatobi1.jfrog.io'
       JFROG_CREDENTIALS = credentials('jfrog-admin-credentials')
       JFROG_PAT = credentials('admin-jfrog-access-token')
-      //USERNAME = 'admin'
-      //PASS = 'Pass1word'
       IMAGE_NAME = 'spring-petclinic'
       IMAGE_TAG = '3.3.0-SNAPSHOT'
       REPO_NAME = 'daniel'
-      run_test = true
+      run_deploy_test = false
       
     }
 
@@ -36,13 +34,11 @@
 
         stage('Run Application') {
             when {
-              expression { return run_test == "true" }
+              expression { return run_deploy_test == "true" }
             }
             steps {
                 // Run the Spring Boot application to verify it works
                 bat './mvnw spring-boot:run'
-                
-                //bat 'java -jar target/*.jar &'
             }
         }
 
@@ -50,7 +46,7 @@
             steps {
                 // Login to Artifactory
                 bat """
-                echo %JFROG_PAT_PSW% | docker login https://%JFROG_URL%/artifactory -u %JFROG_CREDENTIALS_USR% --password-stdin
+                echo %JFROG_PAT_PSW% | docker login https://${JFROG_URL}/artifactory -u %JFROG_CREDENTIALS_USR% --password-stdin
                 """
             }
         }
@@ -59,7 +55,7 @@
             steps {
                 // Tag the Docker image
                 bat """
-                docker tag %IMAGE_NAME%:%IMAGE_TAG% %JFROG_URL%/%REPO_NAME%/%IMAGE_NAME%:%IMAGE_TAG%
+                docker tag ${IMAGE_NAME}:${IMAGE_TAG} ${JFROG_URL}/${REPO_NAME}/${IMAGE_NAME}:${IMAGE_TAG}
                 """
             }
         }
