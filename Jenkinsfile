@@ -44,11 +44,18 @@
             }
         }
 
+        stage('Test Login') {
+            steps {
+                // Login to Artifactory
+                echo '%JFROG_CREDENTIALS_PSW%'
+                echo '%JFROG_CREDENTIALS_PSW%'
+               
+            }
+        }
+
         stage('Artifactory Login') {
             steps {
                 // Login to Artifactory
-                echo %JFROG_CREDENTIALS_PSW%
-                echo %JFROG_CREDENTIALS_USR%
                 bat """
                 echo %JFROG_CREDENTIALS_PSW% | docker login https://%JFROG_URL%/artifactory -u %JFROG_CREDENTIALS_USR% --password-stdin
                 """
