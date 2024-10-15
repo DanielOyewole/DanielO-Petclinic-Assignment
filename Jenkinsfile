@@ -47,8 +47,8 @@
         stage('Test Login') {
             steps {
                 // Login to Artifactory
-                echo '%JFROG_CREDENTIALS_PSW%'
-                echo '%JFROG_CREDENTIALS_PSW%'
+                echo %JFROG_CREDENTIALS_PSW%
+                echo %JFROG_CREDENTIALS_PSW%
                
             }
         }
