@@ -1,4 +1,3 @@
- def JFROG_CREDENTIALS_PSW = "hey"
  pipeline {
     agent any
 
@@ -12,6 +11,7 @@
       IMAGE_TAG = '3.3.0-SNAPSHOT'
       REPO_NAME = 'daniel'
       run_test = false
+      JFROG_CREDENTIALS_PSW = "hey"
     }
 
     stages {
@@ -47,13 +47,9 @@
 
         stage('Test Login') {
             steps {
-                script {
-                    // Login to Artifactory
-                    echo ${JFROG_CREDENTIALS_PSW}
-                    //echo %JFROG_CREDENTIALS_PSW%
-                    echo 'hi'
-
-                }
+                bat """
+                echo %JFROG_CREDENTIALS_PSW%
+                """
                 
                
             }
