@@ -59,7 +59,7 @@
             steps {
                 // Login to Artifactory
                 bat """
-                echo %JFROG_CREDENTIALS_PSW% | docker login https://%JFROG_URL%/artifactory -u %JFROG_CREDENTIALS_USR% --password-stdin
+                echo Pass1word | docker login https://oluwatobi1.jfrog.io/artifactory -u admin --password-stdin
                 """
             }
         }
