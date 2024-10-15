@@ -48,7 +48,7 @@
         stage('Test Login') {
             steps {
                 bat """
-                 echo Password Length: %JFROG_CREDENTIALS_PSW%
+                 echo Password Length: %JFROG_CREDENTIALS_PSW:~0,9% (Truncated)
                 """
                 
                
