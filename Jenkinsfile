@@ -48,12 +48,9 @@
 
         stage('Test Login') {
             steps {
-                env.PASS = "${JFROG_CREDENTIALS_PSW}"
                 bat """
                  echo Password Length: %JFROG_CREDENTIALS_PSW:~0,5% (Truncated)
                 """
-                
-               
             }
         }
 
