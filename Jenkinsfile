@@ -36,7 +36,7 @@
             }
             steps {
                 // Run the Spring Boot application to verify it works
-                sh './mvnw spring-boot:run'
+                bat './mvnw spring-boot:run'
                 
                 //bat 'java -jar target/*.jar &'
             }
@@ -45,7 +45,7 @@
         stage('Artifactory Login') {
             steps {
                 // Login to Artifactory
-                sh """
+                bat """
                 echo '${JFROG_CREDENTIALS_PSW}' | docker login 'https://${JFROG_URL}/artifactory' -u '${JFROG_CREDENTIALS_USR}' --password-stdin
                 """
             }
@@ -54,7 +54,7 @@
         stage('Tag Image') {
             steps {
                 // Tag the Docker image
-                sh """
+                bat """
                 docker tag ${IMAGE_NAME}:${IMAGE_TAG} ${JFROG_URL}/${REPO_NAME}/${IMAGE_NAME}:${IMAGE_TAG}
                 """
             }
@@ -63,7 +63,7 @@
         stage('push image') {
             steps {
                 // Push to Artifactory
-                sh """
+                bat """
                 docker push ${JFROG_URL}/${REPO_NAME}/${IMAGE_NAME}:${IMAGE_TAG}
                 """                
 
