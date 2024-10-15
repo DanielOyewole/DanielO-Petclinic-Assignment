@@ -11,7 +11,7 @@
       IMAGE_NAME = 'spring-petclinic'
       IMAGE_TAG = '3.3.0-SNAPSHOT'
       REPO_NAME = 'daniel'
-      run_test = false
+      run_test = true
       
     }
 
@@ -46,14 +46,6 @@
             }
         }
 
-        stage('Test Login') {
-            steps {
-                bat """
-                 echo Password Length: %JFROG_CREDENTIALS_PSW:~0,5% (Truncated)
-                """
-            }
-        }
-
         stage('Artifactory Login') {
             steps {
                 // Login to Artifactory
@@ -78,9 +70,6 @@
                 bat """
                 docker push ${JFROG_URL}/${REPO_NAME}/${IMAGE_NAME}:${IMAGE_TAG}
                 """                
-
-                //sh 'jfrog rt upload --url https://guddytech.jfrog.io/artifactory/ --access-token ${ARTIFCATORY_ACCESS_TOKEN} target/*.jar java-web-app/'
-                //bat 'java -jar target/*.jar &'
             }
         }
     }
