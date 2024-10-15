@@ -47,7 +47,9 @@
         stage('Artifactory Login') {
             steps {
                 // Login to Artifactory
-                echo %JFROG_CREDENTIALS_PSW% | docker login 'https://%JFROG_URL%/artifactory' -u %JFROG_CREDENTIALS_USR% --password-stdin
+                bat """
+                echo %JFROG_CREDENTIALS_PSW% | docker login https://%JFROG_URL%/artifactory -u %JFROG_CREDENTIALS_USR% --password-stdin
+                """
             }
         }
 
