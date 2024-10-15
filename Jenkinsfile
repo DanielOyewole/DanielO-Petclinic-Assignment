@@ -59,7 +59,7 @@
             steps {
                 // Login to Artifactory
                 bat """
-                echo Pass1word | docker login https://oluwatobi1.jfrog.io/artifactory -u admin --password-stdin
+                echo eyJ2ZXIiOiIyIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYiLCJraWQiOiJCclZHLTFzczU1TXhKckx4aXRBNlNhSXpoVmlVMmg1SS1fSy1zV01vdE5ZIn0.eyJzdWIiOiJqZmFjQDAxamE0dnpyYTY2ejJ2MW1xNTllcDcxd3Y0L3VzZXJzL2FkbWluIiwic2NwIjoiYXBwbGllZC1wZXJtaXNzaW9ucy9hZG1pbiIsImF1ZCI6IipAKiIsImlzcyI6ImpmZmVAMDFqYTR2enJhNjZ6MnYxbXE1OWVwNzF3djQiLCJpYXQiOjE3MjkwMzI5MTIsImp0aSI6IjMyMjFiNWM3LWI4NTYtNDFmZi04NGRkLWEwZmFiYmEyMDMzYSIsInRpZCI6ImEwdXpvcmFubmRjdnAifQ.MruaY320BpTuMPq6rJ2l4hjMqeUArhcTeOYCPSwKYiOlkH4FF8v8iDD0F__JSCy-69-1V-rB5k3YUMvRiznd70jjiMB5s-PhzZ1ppwW8dks_O_V76GX-hq6XHaq0QQ6ewsAwBr8ndzJKwAScjHMCOfBRgO5PlJYgHkQPXrb5S2sVg6S0LCNjGNezIiD9zLNnQD29AYEuvzpMwmGgtLbGtg6aWAEPus6sJlw34ERv6H9woOmfwtxtRQRWwRshd-8huKhSBV4PkIraZszcgZyUxq-EA1r0e2nAkYu7lJ3cwZIx_dhkL8pKKN_Y5A47ZsqjNVYmGeagYS3U3Lchqxx8UA | docker login https://oluwatobi1.jfrog.io/artifactory -u admin --password-stdin
                 """
             }
         }
