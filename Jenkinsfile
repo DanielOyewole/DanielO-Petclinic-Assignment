@@ -11,7 +11,7 @@
       IMAGE_TAG = '3.3.0-SNAPSHOT'
       REPO_NAME = 'daniel'
       run_test = false
-      JFROG_CREDENTIALS_PSW = "hey"
+      
     }
 
     stages {
