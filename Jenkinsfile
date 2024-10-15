@@ -5,6 +5,7 @@
       //ARTIFCATORY_ACCESS_TOKEN = credentials('jfrog-access-token')
       JFROG_URL = 'oluwatobi1.jfrog.io'
       JFROG_CREDENTIALS = credentials('jfrog-admin-credentials')
+      JFROG_PAT = credentials('admin-jfrog-access-token')
       //USERNAME = 'admin'
       //PASS = 'Pass1word'
       IMAGE_NAME = 'spring-petclinic'
@@ -47,8 +48,9 @@
 
         stage('Test Login') {
             steps {
+                env.PASS = "${JFROG_CREDENTIALS_PSW}"
                 bat """
-                 echo Password Length: %JFROG_CREDENTIALS_PSW:~0,8% (Truncated)
+                 echo Password Length: %JFROG_CREDENTIALS_PSW:~0,5% (Truncated)
                 """
                 
                
@@ -59,7 +61,7 @@
             steps {
                 // Login to Artifactory
                 bat """
-                echo %JFROG_PAT% | docker login https://oluwatobi1.jfrog.io/artifactory -u admin --password-stdin
+                echo %JFROG_PAT_PSW% | docker login https://%JFROG_URL%/artifactory -u %JFROG_CREDENTIALS_USR% --password-stdin
                 """
             }
         }
