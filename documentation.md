@@ -35,11 +35,12 @@ Before running the project, ensure you have the following set up:
 The Jenkins pipeline follows these steps:
 
 1. **Clean and Package**: Compiles the Spring Boot application and packages it using Maven.
-2. **Build Docker Image**: Builds a Docker image of the application.
-3. **Run Application**: (Optional) Runs the application to verify functionality. This ONLY RUNS when run_deploy_test is set to "true"
-4. **Artifactory Login**: Logs into JFrog Artifactory to prepare for image upload.
-5. **Tag Image**: Tags the Docker image with the correct version and repository name.
-6. **Push Image**: Pushes the tagged Docker image to JFrog Artifactory.
+2. **Test**: Runs a test on the Spring Boot application using Maven.
+3. **Build Docker Image**: Builds a Docker image of the application.
+4. **Run Application**: (Optional) Runs the application to verify functionality. This ONLY RUNS when run_deploy_test is set to "true"
+5. **Artifactory Login**: Logs into JFrog Artifactory to prepare for image upload.
+6. **Tag Image**: Tags the Docker image with the correct version and repository name.
+7. **Push Image**: Pushes the tagged Docker image to JFrog Artifactory.
 
 ## Dockerfile Explanation
 
@@ -136,7 +137,7 @@ This was set to optional, because when set to true, the pipeline stops at the `R
 BLUE OCEAN PREVIEW:
 
 `run_deploy_test = true`
-![Alt text](https://i.postimg.cc/tCR0vhr7/Screenshot-from-2024-10-16-18-08-13.png)
+![Alt text](https://i.postimg.cc/J0Y3SJ9g/with-run.png)
 `run_deploy_test = false`
-![Alt text](https://i.postimg.cc/RZx8tKjg/Screenshot-from-2024-10-16-17-59-52.png)
+![Alt text](https://i.postimg.cc/Z0ztPt0w/without-run.png)
 
