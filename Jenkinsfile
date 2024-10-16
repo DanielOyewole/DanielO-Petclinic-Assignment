@@ -16,10 +16,17 @@
     stages {
         stage('Clean and Package') {
             steps {
-                // Compile and test using the Spring Boot Maven plugin
+                // Compile using the Spring Boot Maven plugin
                 bat './mvnw clean package'
                 //bat './mvnw package'
-             }
+            }
+        }
+
+        stage('Test') {
+            steps {
+                // Test using the Spring Boot Maven plugin
+                bat './mvnw test'
+            }
         }
 
         stage('Build Docker Image') {
