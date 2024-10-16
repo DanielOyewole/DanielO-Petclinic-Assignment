@@ -9,7 +9,7 @@
       IMAGE_NAME = 'spring-petclinic'
       IMAGE_TAG = '3.3.0-SNAPSHOT'
       REPO_NAME = 'daniel'
-      run_deploy_test = false
+      run_deploy_test = true
       
     }
 
