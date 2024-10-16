@@ -49,6 +49,12 @@ The Dockerfile uses a multi-stage build approach:
 1. **Stage 1 - Build**: Installs Maven, copies project files, and builds the Spring Boot application.
 2. **Stage 2 - Final Image**: Creates a minimal Docker image with just the JAR file and the OpenJDK runtime to run the application and expose it to the network port 8080 for the container to listen on.
 
+## Commands to run the Docker image in your IDE(in my case I used a VScode)
+
+1. Type the command in this double quote "docker build -t danielo-petclinic-assignment ." in your terminal after you have created a dockerfile in your IDE and it will build your docker image.
+2. Type this command "docker run -d -p 8080:8080 -name petclinicontainer danielo-petclinic-assignment" to create your container.
+
+ 
 ## Running the Project in Jenkins Server(Remote or Local)
 1. Set Up Jenkins: Make sure you have Jenkins setup on your personal computer or remote server and your jenkins job configured for the project. If it's a remote server, all you have to do is login and use the job to build the project
 2. If it's personal and not a remote jenkins server, in the job configuration, use a Freestyle Job and point it to your GitHub Repository
